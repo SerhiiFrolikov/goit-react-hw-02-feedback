@@ -11,21 +11,18 @@ class App extends Component {
     bad: 0,
   };
 
-  StatisticsIncrement = event => {
+  StatisticsIncrement = option => {
     this.setState(prevState => ({
-      [event.target.id]: prevState[event.target.id] + 1,
+      [option]: prevState[option] + 1,
     }));
   };
 
-  countTotalFeedback = () => {
-    const totalFeedback = this.state.good + this.state.neutral + this.state.bad;
-    return totalFeedback;
-  };
+  countTotalFeedback = () =>
+    this.state.good + this.state.neutral + this.state.bad;
 
   countPositiveFeedbackPercentage = () => {
     const positiveFeedbackPercentage = Math.round(
-      (this.state.good * 100) /
-        (this.state.good + this.state.neutral + this.state.bad)
+      (this.state.good * 100) / this.countTotalFeedback()
     );
     return positiveFeedbackPercentage;
   };

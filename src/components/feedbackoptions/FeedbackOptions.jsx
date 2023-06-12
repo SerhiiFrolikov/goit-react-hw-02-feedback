@@ -4,15 +4,12 @@ import { Button } from './FeedbackOption.styled';
 
 class FeedbackOptions extends Component {
   render() {
+    const { options, onLeaveFeedback } = this.props;
     return (
       <div>
-        {this.props.options.map(option => {
+        {options.map(option => {
           return (
-            <Button
-              key={option}
-              id={option}
-              onClick={this.props.onLeaveFeedback}
-            >
+            <Button key={option} onClick={() => onLeaveFeedback(option)}>
               {option}
             </Button>
           );
